@@ -19,7 +19,10 @@ public class Testing : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>(); //gets the navmesh agent
         character = this.GetComponent<ThirdPersonCharacter>();
         animator = this.GetComponent<Animator>();
+    }
 
+    private void Start()
+    {
         StartCoroutine(Delay());
     }
 
@@ -28,7 +31,7 @@ public class Testing : MonoBehaviour
 
         if (agent.remainingDistance > agent.stoppingDistance)
         {
-            character.Move(agent.desiredVelocity, false, false);
+            character.Move(agent.desiredVelocity*Time.deltaTime, false, false);
         }
         else
         {
@@ -42,7 +45,7 @@ public class Testing : MonoBehaviour
         Vector3 currentTarget = InitializeMovement();
 
         agent.SetDestination(currentTarget); //sets the destination
-        // yield return new WaitUntil(() => agent.speed != 0); //waits until character starts to move
+        yield return new WaitUntil(() => agent.speed != 0); //waits until character starts to move
 
         isMoving = true;
         yield return new WaitUntil(() => agent.remainingDistance < 0.3f);
@@ -54,7 +57,7 @@ public class Testing : MonoBehaviour
 
     private Vector3 InitializeMovement()
     {
-        newTarget = new Vector3(30, 0, 0);
+        newTarget = new Vector3(-character.transform.position.x, 0, -character.transform.position.z);
         //newTarget.x = newTarget.x + 25f;
 
         return newTarget;

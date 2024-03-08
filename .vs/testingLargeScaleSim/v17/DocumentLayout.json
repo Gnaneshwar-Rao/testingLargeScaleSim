@@ -1,0 +1,125 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\testingLargeScaleSim\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\lowman\\scripts\\newthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\newthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|d:\\testinglargescalesim\\assets\\lowman\\scripts\\fieldofview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\fieldofview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\lowman\\scripts\\visioncone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\visioncone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76D91838-F50F-F5ED-0F9A-7003F1FB6B89}|Assembly-CSharp-Editor.csproj|d:\\testinglargescalesim\\assets\\editor\\fieldofvieweditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76D91838-F50F-F5ED-0F9A-7003F1FB6B89}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\fieldofvieweditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\scripts\\implicitmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\implicitmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FieldOfViewEditor.cs",
+              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\Editor\\FieldOfViewEditor.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\FieldOfViewEditor.cs",
+              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\Editor\\FieldOfViewEditor.cs",
+              "RelativeToolTip": "Assets\\Editor\\FieldOfViewEditor.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T08:18:10.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FieldOfView.cs",
+              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\FieldOfView.cs",
+              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\FieldOfView.cs",
+              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\FieldOfView.cs",
+              "RelativeToolTip": "Assets\\LowMan\\Scripts\\FieldOfView.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAswBwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T08:16:13.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VisionCone.cs",
+              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\VisionCone.cs",
+              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\VisionCone.cs",
+              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\VisionCone.cs",
+              "RelativeToolTip": "Assets\\LowMan\\Scripts\\VisionCone.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAgwFcAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T07:38:56.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NewThirdPersonCharacter.cs",
+              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
+              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
+              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
+              "RelativeToolTip": "Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAYwFIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T07:32:19.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ImplicitMovement.cs",
+              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\Scripts\\ImplicitMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ImplicitMovement.cs",
+              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\Scripts\\ImplicitMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ImplicitMovement.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T03:19:08.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Testing.cs",
+              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Testing.cs",
+              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Testing.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAYwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T02:40:07.155Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

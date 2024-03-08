@@ -65,6 +65,9 @@
     <Compile Include="Assets\Scripts\Boid Movement\BoidCollectiveController.cs" />
     <Compile Include="Assets\LowMan\Scripts\ThirdPersonCharacter.cs" />
     <Compile Include="Assets\Scripts\Testing.cs" />
+    <Compile Include="Assets\LowMan\Scripts\NewThirdPersonCharacter.cs" />
+    <Compile Include="Assets\LowMan\Scripts\VisionCone.cs" />
+    <Compile Include="Assets\LowMan\Scripts\FieldOfView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
