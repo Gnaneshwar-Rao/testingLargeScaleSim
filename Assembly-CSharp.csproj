@@ -56,12 +56,15 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\LBFGS.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidBehaviourParams.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidMovement.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidVision.cs" />
     <Compile Include="Assets\Scripts\ImplicitMovement.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid_Rigidbody.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid.cs" />
+    <Compile Include="Assets\LowMan\Scripts\FieldOfView.cs" />
+    <Compile Include="Assets\LowMan\Scripts\VisionCone.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidCollectiveController.cs" />
     <Compile Include="Assets\LowMan\Scripts\ThirdPersonCharacter.cs" />
     <Compile Include="Assets\Scripts\Testing.cs" />
@@ -315,6 +318,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="alglib.net">
+      <HintPath>Assets\plugins\alglib.net.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -724,17 +730,11 @@
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Services.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
@@ -747,6 +747,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{D8DCB9B0-84FB-6D6A-573E-54551AB10848}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{BB8B2B62-3C9C-5674-3D52-CF2A7856A4EB}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -13,6 +13,7 @@ public class Testing : MonoBehaviour
     [HideInInspector] public int totalDistributedPoints;
     private Vector3 newTarget;
     private bool isMoving;
+    private FieldOfView fieldOfView;
 
     private void Awake()
     {

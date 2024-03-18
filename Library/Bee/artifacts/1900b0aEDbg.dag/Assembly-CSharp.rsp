@@ -117,6 +117,7 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/plugins/alglib.net.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.6f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -343,6 +344,10 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
+<<<<<<< Updated upstream
+=======
+"Assets/LowMan/Scripts/FieldOfView.cs"
+>>>>>>> Stashed changes
 "Assets/LowMan/Scripts/ThirdPersonCharacter.cs"
 "Assets/Scripts/Boid Movement/BoidBehaviourParams.cs"
 "Assets/Scripts/Boid Movement/BoidCollectiveController.cs"
@@ -351,6 +356,7 @@
 "Assets/Scripts/Boid Movement/NewMovementBoid.cs"
 "Assets/Scripts/Boid Movement/NewMovementBoid_Rigidbody.cs"
 "Assets/Scripts/ImplicitMovement.cs"
+"Assets/Scripts/LBFGS.cs"
 "Assets/Scripts/Testing.cs"
 -langversion:9.0
 

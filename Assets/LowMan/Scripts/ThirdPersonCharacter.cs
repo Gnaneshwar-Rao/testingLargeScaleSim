@@ -1,4 +1,10 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using static UnityEngine.UI.Image;
+using static alglib;
+using UnityEngine.AI;
+using UnityEngine.TextCore.Text;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
@@ -17,8 +23,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		[SerializeField] float m_GroundCheckDistance = 0.2f;
 
 		private bool allowCrouching;
+		Vector3 desiredVelocity;
+		Vector3 desiredVelocityN = Vector3.zero;
 
-		Rigidbody m_Rigidbody;
+        Rigidbody m_Rigidbody;
 		Animator m_Animator;
 		bool m_IsGrounded;
 		float m_OrigGroundCheckDistance;
@@ -32,8 +40,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+        private FieldOfView fieldOfView;
+        private alglib.minlbfgsstate state;
+        double[] x = new double[] { 0, 0 };
+        double[] s = new double[] { 1, 1 };
+        double epsg = 0;
+        double epsf = 0;
+        double epsx = 0.0000000001;
+        int maxits = 0;
 
-		void Start()
+        void Start()
 		{
             allowCrouching = false;
 
@@ -54,6 +70,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
 			// direction.
+			desiredVelocity = move;
 			if (move.magnitude > 1f) move.Normalize();
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
@@ -76,9 +93,25 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			ScaleCapsuleForCrouching(crouch);
 			PreventStandingInLowHeadroom();
 
-			// send input and other state parameters to the animator
-			UpdateAnimator(move);
+            // New functions to change m_TurnAmount and m_ForwardAmount through Implicit Movement
+
+            // send input and other state parameters to the animator
+            UpdateAnimator(move);
 		}
+
+        public async void updateTimeStepVelocity (Vector3 move)
+		{
+			desiredVelocityN = move;
+			try
+			{
+                LBFGSOptim();
+            }
+            catch (alglib.alglibexception alglib_exception)
+            {
+                System.Console.WriteLine("ALGLIB exception with message '{0}'", alglib_exception.msg);
+            }
+
+        }
 
         public void MoveBack(Vector3 move, bool crouch, bool jump)
         {
@@ -175,14 +208,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			// calculate which leg is behind, so as to leave that leg trailing in the jump animation
 			// (This code is reliant on the specific run cycle offset in our animations,
 			// and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
-			float runCycle =
+			
+			/*float runCycle =
 				Mathf.Repeat(
 					m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
 			float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
 			if (m_IsGrounded)
 			{
 				m_Animator.SetFloat("JumpLeg", jumpLeg);
-			}
+			}*/
 
 			// the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
 			// which affects the movement speed because of the root motion.
@@ -243,8 +277,145 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 		}
 
+        public void velocity_function(double[] v, ref double func, double[] grad, object obj)
+        {
+			(double RAnticipatroryPot_1, double RAnticipatroryPot_2) = RAnticipatoryPotentialFn();
 
-		void CheckGroundStatus()
+            //change desiredVelocity to timebased velocity at n timestep?
+            func = 0.5 * Math.Pow(v[0], 2) + 0.5 * Math.Pow(v[1], 2) - desiredVelocityN.x * v[0] - desiredVelocity.z * v[1] + 0.5*(Math.Pow(desiredVelocity.x, 2) + Math.Pow(desiredVelocity.z, 2))
+				+ UPotentialEnergyFn() + RAnticipatroryPot_1 + RAnticipatroryPot_2;
+            //func = 100 * System.Math.Pow(v[0] + 3, 4) + System.Math.Pow(v[1] - 3, 4);
+            grad[0] = v[0] - desiredVelocity.x;
+            grad[1] = v[1] - desiredVelocity.z;
+        }
+
+        private void LBFGSOptim()
+        {
+            alglib.minlbfgscreate(1, x, out state);
+            alglib.minlbfgssetcond(state, epsg, epsf, epsx, maxits);
+            alglib.minlbfgssetscale(state, s);
+
+            alglib.minlbfgsreport rep;
+            alglib.minlbfgsoptimize(state, velocity_function, null, null);
+            alglib.minlbfgsresults(state, out x, out rep);
+        }
+
+        private (double, double) RAnticipatoryPotentialFn()
+        {
+            float p = 2f;
+			float k = 2f;
+            float eps = 0.2f;
+            float tauO = 3f;
+			float strengthConst = 2f;
+
+            double cumulativeGoalPotential = 0f;
+            double goalPotential = 0f;
+
+			double cumulativeTTCPotential = 0f;
+			double TTCPotential = 0f;
+
+            // change 5 to fieldOfView - MAXOBSERVABLECHARS
+            for (int i = 0; i < 5; i++)
+            {
+                if (fieldOfView.charactersNearList[i] != null)
+                {
+					goalPotential = 0.5 * strengthConst * Math.Pow(Vector3.Dot(desiredVelocity - desiredVelocityN, desiredVelocity - desiredVelocityN), 2);
+
+                    Vector3 x_i = transform.position;
+                    Vector3 x_j = fieldOfView.charactersNearList[i].transform.position;
+                    Vector3 v_i = desiredVelocity;
+                    Vector3 v_j = fieldOfView.charactersNearList[i].character.desiredVelocity;
+
+                    Vector3 relativePosition = x_j - x_i;
+                    Vector3 relativeVelocity = v_j - v_i;
+
+					double powerValue = -1 / calculateSigma(relativePosition, relativeVelocity, fieldOfView.radius, eps) * tauO;
+
+                    TTCPotential = k * Math.Pow(calculateSigma(relativePosition, relativeVelocity, fieldOfView.radius, eps), p) * Math.Pow(Math.E, powerValue);
+                }
+				cumulativeTTCPotential += TTCPotential;
+				cumulativeGoalPotential += goalPotential;
+            }
+			return (cumulativeGoalPotential, cumulativeTTCPotential);
+        }
+
+		private double calculateSigma(Vector3 xij, Vector3 vij, float radius, float eps)
+		{
+            double alpha = Math.Atan(vij.z/vij.x);
+			double theta = Math.Atan(xij.z/xij.x);
+			float vP_mag = vij.magnitude * (float)Math.Cos(alpha-theta);
+			Vector3 vP = new Vector3(xij.normalized.x * vP_mag, vij.y, xij.normalized.z * vP_mag);
+
+			float mag = radius / (float)(Math.Pow(xij.magnitude, 2) - Math.Pow(radius, 2));
+			Vector3 vt_max = new Vector3(vP.x * mag, vP.y, vP.z * mag);
+
+			mag = (float)Math.Sqrt(1 - Math.Pow(eps, 2));
+            Vector3 v_t = new Vector3(vt_max.x * mag, vt_max.y, vt_max.z * mag);
+
+			double sigma_lim = Math.Pow(Vector3.Dot(v_t, v_t), 2) / 
+				(-1*Vector3.Dot(xij, v_t) - Math.Sqrt(Math.Pow(Vector3.Dot(xij, v_t), 2) - Math.Pow(Vector3.Dot(v_t, v_t), 2) * (Math.Pow(Vector3.Dot(xij, xij), 2) - Math.Pow(radius, 2))));
+			
+			if (v_t.magnitude < vt_max.magnitude)
+			{
+                double sigma = Math.Pow(Vector3.Dot(vij, vij), 2) /
+                (-1 * Vector3.Dot(xij, vij) - Math.Sqrt(Math.Pow(Vector3.Dot(xij, vij), 2) - Math.Pow(Vector3.Dot(vij, vij), 2) * (Math.Pow(Vector3.Dot(xij, xij), 2) - Math.Pow(radius, 2))));
+
+				return sigma;
+            } else
+			{
+				return sigma_lim * vij.magnitude / v_t.magnitude;
+			}
+        }
+
+        private double UPotentialEnergyFn()
+        {
+            float repulsionConst = 0.01f;
+            float cumulativePotentialEnergy = 0f;
+            float potentialEnergy = 0f;
+            float value, minimum;
+            Vector3 dMin, relativePosition, relativePositionN;
+
+            // change 5 to fieldOfView - MAXOBSERVABLECHARS
+            for (int i = 0; i < 5; i++)
+            {
+                if (fieldOfView.charactersNearList[i] != null)
+                {
+                    Vector3 x_i = transform.position;
+                    Vector3 x_j = fieldOfView.charactersNearList[i].transform.position;
+					Vector3 xn_i = x_i + desiredVelocity*Time.deltaTime;
+                    Vector3 xn_j = x_j + fieldOfView.charactersNearList[i].character.desiredVelocity * Time.deltaTime;
+
+                    relativePosition = x_j - x_i;
+                    relativePositionN = xn_j - xn_i;
+
+                    value = Vector3.Dot(relativePositionN, relativePositionN - relativePosition) / (float)Math.Pow((relativePosition - relativePositionN).magnitude, 2);
+                    minimum = Math.Clamp(value, 0, 1);
+
+                    dMin = (1 - minimum) * relativePositionN + minimum * relativePosition;
+                    // dMin = dMin.normalized;
+
+                    if (dMin.magnitude > fieldOfView.radius)
+                    {
+                        potentialEnergy = repulsionConst / (dMin.magnitude - fieldOfView.radius);
+                    }
+                    else
+                    {
+                        potentialEnergy = 99999f;
+                    }
+                }
+                cumulativePotentialEnergy += potentialEnergy;
+
+            }
+            return cumulativePotentialEnergy;
+        }
+
+        private void LBFGSOptimization()
+        {
+
+        }
+
+
+        void CheckGroundStatus()
 		{
 			RaycastHit hitInfo;
 #if UNITY_EDITOR
