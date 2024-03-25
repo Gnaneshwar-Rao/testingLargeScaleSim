@@ -60,11 +60,10 @@
     <Compile Include="Assets\Scripts\Boid Movement\BoidBehaviourParams.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidMovement.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidVision.cs" />
+    <Compile Include="Assets\LowMan\Scripts\FieldOfView.cs" />
     <Compile Include="Assets\Scripts\ImplicitMovement.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid_Rigidbody.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid.cs" />
-    <Compile Include="Assets\LowMan\Scripts\FieldOfView.cs" />
-    <Compile Include="Assets\LowMan\Scripts\VisionCone.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidCollectiveController.cs" />
     <Compile Include="Assets\LowMan\Scripts\ThirdPersonCharacter.cs" />
     <Compile Include="Assets\Scripts\Testing.cs" />
