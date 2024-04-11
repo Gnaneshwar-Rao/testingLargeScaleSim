@@ -15,18 +15,25 @@ public class FieldOfView : MonoBehaviour
     public GameObject playerRef;
 
     public bool canSeePlayer;
-    private const int MAXOBSERVABLECHARS = 5;
-    private List<Testing> charactersNearList = new List<Testing>(MAXOBSERVABLECHARS);
+    public static int MAXOBSERVABLECHARS = 5;
+    public List<Testing> charactersNearList;
 
-    private void Start()
+    private void Awake()
     {
-        playerRef = GameObject.FindGameObjectWithTag("Player");
+        //for (int i = 0; i < MAXOBSERVABLECHARS; i++) charactersNearList.Add(null);
+        CheckforColliders();
         StartCoroutine(FOVRoutine());
     }
 
+    /*private void Start()
+    {
+        //playerRef = GameObject.FindGameObjectWithTag("Player");
+        //StartCoroutine(FOVRoutine());
+    }*/
+
     private IEnumerator FOVRoutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
 
         while (true)
         {
@@ -38,8 +45,6 @@ public class FieldOfView : MonoBehaviour
     private void FieldOfViewCheck()
     {
         CheckforColliders();
-        
-        
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
         if (rangeChecks.Length != 0)
@@ -65,16 +70,15 @@ public class FieldOfView : MonoBehaviour
 
     private void CheckforColliders()
     {
-        Ray ray1 = new Ray(transform.position, new Vector3(0, 0, 1).normalized);
-        Ray ray2 = new Ray(transform.position, new Vector3(1, 0, 0).normalized);
-        Ray ray3 = new Ray(transform.position, new Vector3(-1, 0, 0).normalized);
-        Ray ray4 = new Ray(transform.position, new Vector3(1, 0, 1).normalized);
-        Ray ray5 = new Ray(transform.position, new Vector3(-1, 0, 1).normalized);
-        Ray ray6 = new Ray(transform.position, new Vector3(1, 0, -1).normalized);
-        Ray ray7 = new Ray(transform.position, new Vector3(-1, 0, -1).normalized);
+        Ray ray1 = new Ray(transform.position, transform.TransformDirection(new Vector3(0, 0, 1) * radius));
+        Ray ray2 = new Ray(transform.position, transform.TransformDirection(new Vector3(1, 0, 1).normalized * radius));
+        Ray ray3 = new Ray(transform.position, transform.TransformDirection(new Vector3(-1, 0, 1).normalized * radius));
+        //Ray ray4 = new Ray(transform.position, transform.TransformDirection(new Vector3(1, 0, 0) * radius));
+        //Ray ray5 = new Ray(transform.position, transform.TransformDirection(new Vector3(-1, 0, 0) * radius));
 
 
-        if (Physics.Raycast(ray1, out RaycastHit hitObject, radius, targetMask))
+
+        if (Physics.Raycast(ray1, out RaycastHit hitObject, radius))
         {
             Testing characMovScript = hitObject.collider.GetComponentInParent<Testing>();
             if (characMovScript != null)
@@ -83,9 +87,9 @@ public class FieldOfView : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(ray2, out RaycastHit hitObject2, radius, targetMask))
+        if (Physics.Raycast(ray2, out RaycastHit hitObject2, radius))
         {
-            Testing characMovScript = hitObject2.collider.GetComponentInParent<Testing>();
+            Testing characMovScript = hitObject.collider.GetComponentInParent<Testing>();
             if (characMovScript != null)
             {
                 AddToNearList(characMovScript);
@@ -94,16 +98,16 @@ public class FieldOfView : MonoBehaviour
 
         if (Physics.Raycast(ray3, out RaycastHit hitObject3, radius, targetMask))
         {
-            Testing characMovScript = hitObject3.collider.GetComponentInParent<Testing>();
+            Testing characMovScript = hitObject.collider.GetComponentInParent<Testing>();
             if (characMovScript != null)
             {
                 AddToNearList(characMovScript);
             }
         }
 
-        if (Physics.Raycast(ray4, out RaycastHit hitObject4, radius, targetMask))
+        /*if (Physics.Raycast(ray4, out RaycastHit hitObject4, radius, targetMask))
         {
-            Testing characMovScript = hitObject4.collider.GetComponentInParent<Testing>();
+            Testing characMovScript = hitObject.collider.GetComponentInParent<Testing>();
             if (characMovScript != null)
             {
                 AddToNearList(characMovScript);
@@ -112,30 +116,12 @@ public class FieldOfView : MonoBehaviour
 
         if (Physics.Raycast(ray5, out RaycastHit hitObject5, radius, targetMask))
         {
-            Testing characMovScript = hitObject5.collider.GetComponentInParent<Testing>();
+            Testing characMovScript = hitObject.collider.GetComponentInParent<Testing>();
             if (characMovScript != null)
             {
                 AddToNearList(characMovScript);
             }
-        }
-
-        if (Physics.Raycast(ray6, out RaycastHit hitObject6, radius, targetMask))
-        {
-            Testing characMovScript = hitObject6.collider.GetComponentInParent<Testing>();
-            if (characMovScript != null)
-            {
-                AddToNearList(characMovScript);
-            }
-        }
-
-        if (Physics.Raycast(ray7, out RaycastHit hitObject7, radius, targetMask))
-        {
-            Testing characMovScript = hitObject7.collider.GetComponentInParent<Testing>();
-            if (characMovScript != null)
-            {
-                AddToNearList(characMovScript);
-            }
-        }
+        }*/
 
     }
 

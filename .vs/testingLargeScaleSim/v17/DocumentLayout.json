@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\testingLargeScaleSim\\",
+  "WorkspaceRootPath": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\lowman\\scripts\\newthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\newthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|c:\\users\\gnanesh\\desktop\\simulation 1\\testinglargescalesim\\assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|d:\\testinglargescalesim\\assets\\lowman\\scripts\\fieldofview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\fieldofview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewPlayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\lowman\\scripts\\visioncone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\visioncone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76D91838-F50F-F5ED-0F9A-7003F1FB6B89}|Assembly-CSharp-Editor.csproj|d:\\testinglargescalesim\\assets\\editor\\fieldofvieweditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76D91838-F50F-F5ED-0F9A-7003F1FB6B89}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\fieldofvieweditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewMovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|D:\\testingLargeScaleSim\\assets\\scripts\\implicitmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\implicitmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewWave.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|c:\\users\\gnanesh\\desktop\\simulation 1\\testinglargescalesim\\assets\\scripts\\testing_0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\testing_0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\lowman\\scripts\\navthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\navthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,87 +34,118 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FieldOfViewEditor.cs",
-              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\Editor\\FieldOfViewEditor.cs",
-              "RelativeDocumentMoniker": "Assets\\Editor\\FieldOfViewEditor.cs",
-              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\Editor\\FieldOfViewEditor.cs",
-              "RelativeToolTip": "Assets\\Editor\\FieldOfViewEditor.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAAwA4AAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "Testing_0.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing_0.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Testing_0.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing_0.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Testing_0.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAzwB4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T08:18:10.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FieldOfView.cs",
-              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\FieldOfView.cs",
-              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\FieldOfView.cs",
-              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\FieldOfView.cs",
-              "RelativeToolTip": "Assets\\LowMan\\Scripts\\FieldOfView.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAswBwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T08:16:13.291Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "VisionCone.cs",
-              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\VisionCone.cs",
-              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\VisionCone.cs",
-              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\VisionCone.cs",
-              "RelativeToolTip": "Assets\\LowMan\\Scripts\\VisionCone.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAgwFcAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T07:38:56.357Z",
+              "WhenOpened": "2024-04-11T05:40:37.022Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "NewThirdPersonCharacter.cs",
-              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
-              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
-              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
-              "RelativeToolTip": "Assets\\LowMan\\Scripts\\NewThirdPersonCharacter.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAYwFIAAAAAAAAA",
+              "Title": "Testing.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Testing.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Testing.cs",
+              "ViewState": "AQIAAKgAAAAAAAAAAAAtwL8AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T07:32:19.485Z",
+              "WhenOpened": "2024-04-11T04:26:53.528Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ImplicitMovement.cs",
-              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\Scripts\\ImplicitMovement.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ImplicitMovement.cs",
-              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\Scripts\\ImplicitMovement.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ImplicitMovement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "NavThirdPersonCharacter.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
+              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
+              "RelativeToolTip": "Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAhwLcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T03:19:08.486Z"
-            },
+              "WhenOpened": "2024-04-09T08:56:48.628Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "1b64e671-3ced-457f-9a55-8052371b35d7",
+        "Display": 1,
+        "X": 209,
+        "Y": 209,
+        "Width": 1276,
+        "Height": 699,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Testing.cs",
-              "DocumentMoniker": "D:\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Testing.cs",
-              "ToolTip": "D:\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Testing.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwCEAAAAAAAAA",
+              "Title": "NewPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewPlayer.cs",
+              "RelativeDocumentMoniker": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewPlayer.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewPlayer.cs",
+              "RelativeToolTip": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewPlayer.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T02:40:07.155Z",
+              "WhenOpened": "2024-04-11T09:11:22.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NewManager.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewManager.cs",
+              "RelativeDocumentMoniker": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewManager.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewManager.cs",
+              "RelativeToolTip": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T08:53:53.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewWave.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewWave.cs",
+              "RelativeDocumentMoniker": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewWave.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewWave.cs",
+              "RelativeToolTip": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewUI\\NewWave.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T08:52:19.514Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NewMovement.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewMovement.cs",
+              "RelativeDocumentMoniker": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewMovement.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewMovement.cs",
+              "RelativeToolTip": "..\\..\\For reference\\Thales-Unity-Frontend\\Assets\\Scripts\\NewMovement\\NewMovement.cs",
+              "ViewState": "AQIAAP8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T08:31:11.916Z",
               "EditorCaption": ""
             }
           ]

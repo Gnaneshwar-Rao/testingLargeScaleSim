@@ -56,18 +56,33 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\NewPlayer.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidBehaviourParams.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidMovement.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidVision.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\LineDrawer.cs" />
     <Compile Include="Assets\Scripts\ImplicitMovement.cs" />
+    <Compile Include="Assets\Scripts\Testing_1.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid_Rigidbody.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid.cs" />
-    <Compile Include="Assets\Scripts\Boid Movement\BoidCollectiveController.cs" />
-    <Compile Include="Assets\LowMan\Scripts\ThirdPersonCharacter.cs" />
-    <Compile Include="Assets\Scripts\Testing.cs" />
-    <Compile Include="Assets\LowMan\Scripts\NewThirdPersonCharacter.cs" />
-    <Compile Include="Assets\LowMan\Scripts\VisionCone.cs" />
+    <Compile Include="Assets\LowMan\Scripts\NavThirdPersonCharacter.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\Pathfinding.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\SimulationElement.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\SwitchScene.cs" />
+    <Compile Include="Assets\Scripts\CrowdAgent.cs" />
+    <Compile Include="Assets\Scripts\CrowdSimulation.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\Simulation.cs" />
     <Compile Include="Assets\LowMan\Scripts\FieldOfView.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\GridElements.cs" />
+    <Compile Include="Assets\LowMan\Scripts\VisionCone.cs" />
+    <Compile Include="Assets\Scripts\Boid Movement\BoidCollectiveController.cs" />
+    <Compile Include="Assets\Scripts\Testing_0.cs" />
+    <Compile Include="Assets\LowMan\Scripts\ThirdPersonCharacter.cs" />
+    <Compile Include="Assets\LowMan\Scripts\NewThirdPersonCharacter.cs" />
+    <Compile Include="Assets\Scripts\Djisktra Movement Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\Testing.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -313,11 +328,26 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="alglib.net">
+      <HintPath>Assets\plugins\alglib.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord">
+      <HintPath>Assets\plugins\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core">
+      <HintPath>Assets\plugins\Accord.Math.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RVO">
+      <HintPath>Assets\plugins\RVO.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math">
+      <HintPath>Assets\plugins\Accord.Math.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.6f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -691,23 +721,14 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Services.Core.Analytics">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Services.Core.Environments">
-      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    <Reference Include="Unity.Sysroot.Linux_x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Sysroot.Linux_x86_64.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -739,14 +760,32 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualScripting.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Services.Core">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Shared.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+      <HintPath>Library\ScriptAssemblies\Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+    <Reference Include="Unity.SysrootPackage.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
