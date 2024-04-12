@@ -318,7 +318,9 @@ MonoBehaviour:
   currentPosition: 0
   totalDistributedPoints: 0
   fieldOfViewChars:
-  - {fileID: 2071685590}
+  - {fileID: 1066702192}
+  - {fileID: 2071685593}
+  - {fileID: 639891421}
 --- !u!1001 &512490769
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dbf4696529fa77949a16a68be6e8dda0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dbf4696529fa77949a16a68be6e8dda0, type: 3}
       propertyPath: m_TagString
@@ -905,22 +907,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &639891416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 639891397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 676bf8beaa070264ebf776ddc7eb7ced, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  agent: {fileID: 639891399}
-  currentPosition: 0
-  totalDistributedPoints: 0
 --- !u!114 &639891417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,7 +929,7 @@ MonoBehaviour:
   m_GroundCheckDistance: 0.2
   m_Rigidbody: {fileID: 639891402}
   m_agent: {fileID: 639891399}
---- !u!114 &639891418
+--- !u!114 &639891421
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -952,11 +938,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 639891397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80b0f6a2f5c3c824eb733410343eee66, type: 3}
+  m_Script: {fileID: 11500000, guid: b16c7b4f01f71834689bd3d17216192d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 1
-  avoidanceRadius: 1
+  character: {fileID: 0}
+  agent: {fileID: 639891399}
+  currentPosition: 0
+  totalDistributedPoints: 0
+  fieldOfViewChars:
+  - {fileID: 436258861}
+  - {fileID: 1066702192}
+  - {fileID: 2071685593}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,7 +1413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dbf4696529fa77949a16a68be6e8dda0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dbf4696529fa77949a16a68be6e8dda0, type: 3}
       propertyPath: m_TagString
@@ -1742,8 +1734,8 @@ MonoBehaviour:
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.2
   m_Rigidbody: {fileID: 1066702168}
-  m_agent: {fileID: 0}
---- !u!114 &1066702189
+  m_agent: {fileID: 1066702165}
+--- !u!114 &1066702192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1752,13 +1744,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1066702163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed826c20e8b5b914795168462720b28d, type: 3}
+  m_Script: {fileID: 11500000, guid: b16c7b4f01f71834689bd3d17216192d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   agent: {fileID: 1066702165}
   currentPosition: 0
   totalDistributedPoints: 0
+  fieldOfViewChars:
+  - {fileID: 436258861}
+  - {fileID: 2071685593}
+  - {fileID: 639891421}
 --- !u!1 &1810385376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +2030,7 @@ MonoBehaviour:
   m_GroundCheckDistance: 0.2
   m_Rigidbody: {fileID: 2071685574}
   m_agent: {fileID: 2071685571}
---- !u!114 &2071685590
+--- !u!114 &2071685593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2043,10 +2039,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2071685569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed826c20e8b5b914795168462720b28d, type: 3}
+  m_Script: {fileID: 11500000, guid: b16c7b4f01f71834689bd3d17216192d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
   agent: {fileID: 2071685571}
   currentPosition: 0
   totalDistributedPoints: 0
+  fieldOfViewChars:
+  - {fileID: 436258861}
+  - {fileID: 1066702192}
+  - {fileID: 639891421}
