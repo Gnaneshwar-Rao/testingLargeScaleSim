@@ -82,8 +82,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // turn amount and forward amount required to head in the desired
             // direction.
             velocity = move;
-            if (move.magnitude > 1f || move.magnitude < 1f) move.Normalize();
+
             move = transform.InverseTransformDirection(move);
+            if (move.magnitude > 1f || move.magnitude < 1f) move.Normalize();
             CheckGroundStatus();
             move = Vector3.ProjectOnPlane(move, m_GroundNormal);
             m_TurnAmount = Mathf.Atan2(move.x, move.z);
@@ -92,30 +93,34 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             ApplyExtraTurnRotation();
 
-            // New functions to change m_TurnAmount and m_ForwardAmount through Implicit Movement
-
             // send input and other state parameters to the animator
             UpdateAnimator(move);
         }
 
-        public void Move(Vector3 move, bool crouch, bool jump, float turnAngle, float tangentialVel)
+        public void Move(Vector3 move, bool crouch, bool jump, float turnAngle, float tangentialVelFactor)
         {
 
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired
             // direction.
             velocity = move;
-            if (move.magnitude > 1f || move.magnitude < 1f) move.Normalize();
             move = transform.InverseTransformDirection(move);
+            move.z = move.z * tangentialVelFactor;
+            if (move.magnitude > 1f || move.magnitude < 1f) move.Normalize();
             CheckGroundStatus();
             move = Vector3.ProjectOnPlane(move, m_GroundNormal);
-            // m_TurnAmount = Mathf.Atan2(move.x, move.z);
-            m_TurnAmount = turnAngle; //* Mathf.Rad2Deg
+            
+            if(tangentialVelFactor != 1f)
+            {
+                m_TurnAmount = turnAngle;
+                //m_TurnAmount = Mathf.Atan2(move.x, move.z);
+            } else
+            {
+                m_TurnAmount = turnAngle; //* Mathf.Rad2Deg
+            }
             m_ForwardAmount = move.z;
 
             ApplyExtraTurnRotation();
-
-            // New functions to change m_TurnAmount and m_ForwardAmount through Implicit Movement
 
             // send input and other state parameters to the animator
             UpdateAnimator(move);
@@ -174,10 +179,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             if (m_IsGrounded && Time.deltaTime > 0)
             {
                 Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
-
-                // we preserve the existing y part of the current velocity.
-                //v.y = m_Rigidbody.velocity.y;
-                //m_Rigidbody.velocity = v;
 
                 v.y = m_agent.velocity.y;
                 m_agent.velocity = v;

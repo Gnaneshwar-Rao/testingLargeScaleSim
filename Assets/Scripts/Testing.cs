@@ -21,6 +21,8 @@ public class Testing : MonoBehaviour
     private Vector3 newDesiredVelocity;
     private float tangentialVel;
 
+    private bool firstFrame = true;
+
     private void Awake()
     {
         agent = this.GetComponent<NavMeshAgent>(); //gets the navmesh agent
@@ -32,18 +34,24 @@ public class Testing : MonoBehaviour
 
     void Update()
     {
-        (turnAngle, newDesiredVelocity, tangentialVel) = evaluateNewVel();
+        if (firstFrame)
+        {
+            character.Move(agent.destination - transform.position, false, false);
+            firstFrame = false;
+        } else
+        {
+            (turnAngle, newDesiredVelocity, tangentialVel) = evaluateNewVel();
 
-        if (agent.remainingDistance > agent.stoppingDistance)
-        {
-            //character.Move(agent.desiredVelocity, false, false, 0f);
-            character.Move(newDesiredVelocity, false, false, turnAngle, tangentialVel);
-        }
-        else
-        {
-            character.Move(Vector3.zero, false, false, 0f, 0f);
-            agent.velocity = Vector3.zero;
-            isMoving = false;
+            if (agent.remainingDistance > agent.stoppingDistance)
+            {
+                character.Move(newDesiredVelocity, false, false, turnAngle, tangentialVel);
+            }
+            else
+            {
+                character.Move(Vector3.zero, false, false);
+                agent.velocity = Vector3.zero;
+                isMoving = false;
+            }
         }
     }
 
@@ -79,13 +87,10 @@ public class Testing : MonoBehaviour
         float neg_Phi = float.MinValue; 
         float pos_Phi = float.MaxValue;
         float threshold_bearingAngle;
-        // List<Testing> positive_neighbour = new List<Testing>();
-        // List<Testing> negative_neighbour = new List<Testing>();
 
         bool neighbourExist = false;
 
         Vector3 relativeGoalVelocity = -1 * agent.velocity.normalized;
-        //Vector3 relativeGoalVelocity = -1 * transform.forward.normalized;
         Vector3 relativeGoalVelocity_conv = Vector3.Dot(relativeGoalVelocity, (agent.destination - transform.position).normalized) * (agent.destination - transform.position).normalized;
         Vector3 relativeGoalVelocity_orth = relativeGoalVelocity - relativeGoalVelocity_conv;
         float changeInBearingAngle_Goal = Mathf.Atan(relativeGoalVelocity_orth.magnitude / (Vector3.Distance(agent.destination, transform.position) - relativeGoalVelocity_conv.magnitude));
@@ -94,15 +99,12 @@ public class Testing : MonoBehaviour
         if (crossGoal.y < 0f) {
             changeInBearingAngle_Goal = -1f * changeInBearingAngle_Goal;
         }
-
-        //Vector3 forwardDir = transform.forward;
-        //float bearingAngleGoal = Vector3.Angle(forwardDir, agent.destination - transform.position);
         
         float tti_min = float.MaxValue;
 
         float angularVelocity;
-        Vector3 newDesiredVelocity = agent.desiredVelocity;
-        float tangentialVelocity = 0f;
+        Vector3 newDesiredVelocity = agent.velocity;
+        float tangentialVelocityFac = 0f;
 
         bool Once = false;
 
@@ -121,14 +123,10 @@ public class Testing : MonoBehaviour
                 }
 
                 Vector3 relativeVelocity = neighbour.agent.velocity.normalized - this.agent.velocity.normalized;
-
-                //float bearingAngle = Vector3.Angle(neighbour.character.m_Rigidbody.velocity - this.character.m_Rigidbody.velocity, this.character.m_Rigidbody.velocity);
-                //Vector3 relativeVelocity = neighbour.character.m_Rigidbody.velocity - this.character.m_Rigidbody.velocity;
-
                 Vector3 relativeVelocity_conv = Vector3.Dot(relativeVelocity, (neighbour.transform.position - transform.position).normalized) * (neighbour.transform.position - transform.position).normalized;
                 Vector3 relativeVelocity_orth = relativeVelocity - relativeVelocity_conv;
                 float tti = Vector3.Distance(neighbour.transform.position, transform.position) / (relativeVelocity_conv.normalized.magnitude);
-                
+
                 if(Vector3.Angle((neighbour.transform.position - transform.position).normalized, relativeVelocity) <= 90f)
                 {
                     tti = -1 * tti;
@@ -136,10 +134,10 @@ public class Testing : MonoBehaviour
                 
                 float changeInBearingAngle = Mathf.Atan(relativeVelocity_orth.magnitude / (Vector3.Distance(neighbour.transform.position, transform.position) - relativeVelocity_conv.magnitude));
 
-                if (bearingAngle < 0)
+                /*if (bearingAngle < 0)
                 {
                     changeInBearingAngle = -1f * changeInBearingAngle;
-                }
+                }*/
 
                 if (changeInBearingAngle < 0)
                 {
@@ -156,49 +154,53 @@ public class Testing : MonoBehaviour
                     adaptation of parameters with respect to external factors, such as
                     local density of population, may open interesting perspectives.*/
 
-
-
                     threshold_bearingAngle = -1f * 0.6f / (tti * Mathf.Sqrt(tti));
+
+                    if (Math.Abs(threshold_bearingAngle) > Math.PI / 2)
+                    {
+                        threshold_bearingAngle = -1f * (float)Math.PI / 2;
+                    }
+
                     if (tti > 0 && Math.Abs(changeInBearingAngle) < Math.Abs(threshold_bearingAngle))
                     {
                         if (!Once)
                         {
                             neg_Phi = changeInBearingAngle - threshold_bearingAngle;
-                            //neg_Phi = threshold_bearingAngle - changeInBearingAngle;
+                            tti_min = tti;
+                            neighbourExist = true;
+                            Once = true;
                         } else
                         {
                             neg_Phi = Mathf.Max(neg_Phi, changeInBearingAngle - threshold_bearingAngle);
-                            //neg_Phi = Mathf.Max(neg_Phi, threshold_bearingAngle - changeInBearingAngle);
+                            tti_min = Mathf.Min(tti_min, tti);
+                            neighbourExist = true;
                         }
-
-                        // negative_neighbour.Add(neighbour);             
-                        tti_min = Mathf.Min(tti_min, tti);
-                        neighbourExist = true;
-
-                        Once = true;
                     }
                 }
                 else
                 {
                     threshold_bearingAngle = 0.6f / (tti * Mathf.Sqrt(tti));
+
+                    if (Math.Abs(threshold_bearingAngle) > Math.PI / 2)
+                    {
+                        threshold_bearingAngle = (float)Math.PI / 2;
+                    }
+
                     if (tti > 0 && Math.Abs(changeInBearingAngle) < Math.Abs(threshold_bearingAngle))
                     {
                         if (!Once)
                         {
                             pos_Phi = changeInBearingAngle - threshold_bearingAngle;
-                            //pos_Phi = threshold_bearingAngle - changeInBearingAngle;
+                            tti_min = tti;
+                            neighbourExist = true;
+                            Once = true;
                         }
                         else
                         {
                             pos_Phi = Mathf.Min(pos_Phi, changeInBearingAngle - threshold_bearingAngle);
-                            //pos_Phi = Mathf.Min(pos_Phi, threshold_bearingAngle - changeInBearingAngle);
+                            tti_min = Mathf.Min(tti_min, tti);
+                            neighbourExist = true;
                         }
-
-                        // positive_neighbour.Add(neighbour);
-                        tti_min = Mathf.Min(tti_min, tti);
-                        neighbourExist = true;
-
-                        Once = true;
                     }
                 }
             }      
@@ -244,23 +246,21 @@ public class Testing : MonoBehaviour
             angularVelocity = changeInBearingAngle_Goal;
         } 
 
-        if(Math.Abs(angularVelocity) > Math.PI / 2) {
-            if(angularVelocity >= 0f)
-            {
-                angularVelocity = (float)Math.PI / 2;
-            } else
-            {
-                angularVelocity = -1f * (float)Math.PI / 2;
-            }
-            
-        }
 
         if (neighbourExist && tti_min < 3f)
         {
-            tangentialVelocity = agent.desiredVelocity.x * (float)(1 - Math.Pow(Math.E, (double)(-1 * 0.5 * tti_min * tti_min)));
+            tangentialVelocityFac = (float)(1 - Math.Pow(Math.E, (double)(-1 * 0.5 * tti_min * tti_min)));
+  
+        } else
+        {
+            tangentialVelocityFac = 1f;
         }
 
-        return (angularVelocity, newDesiredVelocity, tangentialVelocity);
+        if(Vector3.Distance(agent.destination, transform.position) < 0.2f) {
+            newDesiredVelocity = Vector3.zero;
+        }
+
+        return (angularVelocity, newDesiredVelocity, tangentialVelocityFac);
     }
 
 }
