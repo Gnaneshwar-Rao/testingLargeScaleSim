@@ -15,7 +15,9 @@ public class Testing : MonoBehaviour
     private Vector3 newTarget;
     private bool isMoving;
     //private FieldOfView fieldOfView;
-    [SerializeField] List<Testing> fieldOfViewChars;
+    //[SerializeField] List<Testing> fieldOfViewChars;
+    [HideInInspector] public FindNearestPlayerObstacle findPlayer;
+    public List<Testing> fieldOfViewChars;
 
     private float turnAngle;
     private Vector3 newDesiredVelocity;
@@ -28,12 +30,14 @@ public class Testing : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>(); //gets the navmesh agent
         character = this.GetComponent<NavThirdPersonCharacter>();
         animator = this.GetComponent<Animator>();
+        findPlayer = this.GetComponentInChildren<FindNearestPlayerObstacle>();
 
         StartCoroutine(Delay());
     }
 
     void Update()
     {
+        this.fieldOfViewChars = findPlayer.nearestPlayers;
         if (firstFrame)
         {
             character.Move(agent.destination - transform.position, false, false);
@@ -67,11 +71,12 @@ public class Testing : MonoBehaviour
         //  waits until character reaches it destination
         //  sensitivity
 
-        Finish();
+        Delay();
     }
 
     private Vector3 InitializeMovement()
     {
+        //newTarget = new Vector3(-character.transform.position.x, character.transform.position.y, -character.transform.position.z);
         newTarget = new Vector3(-character.transform.position.x, character.transform.position.y, -character.transform.position.z);
 
         return newTarget;
@@ -93,13 +98,14 @@ public class Testing : MonoBehaviour
         Vector3 relativeGoalVelocity = -1 * agent.velocity.normalized;
         Vector3 relativeGoalVelocity_conv = Vector3.Dot(relativeGoalVelocity, (agent.destination - transform.position).normalized) * (agent.destination - transform.position).normalized;
         Vector3 relativeGoalVelocity_orth = relativeGoalVelocity - relativeGoalVelocity_conv;
-        float changeInBearingAngle_Goal = Mathf.Atan(relativeGoalVelocity_orth.magnitude / (Vector3.Distance(agent.destination, transform.position) - relativeGoalVelocity_conv.magnitude));
+        float changeInBearingAngle_Goal = Mathf.Atan(relativeGoalVelocity_orth.magnitude / ((agent.destination - transform.position).magnitude - relativeGoalVelocity_conv.magnitude));
 
-        Vector3 crossGoal = Vector3.Cross(agent.velocity.normalized, agent.destination - transform.position);
-        if (crossGoal.y < 0f) {
+        //Vector3 crossGoal = Vector3.Cross(agent.velocity.normalized, agent.destination - transform.position);
+        float crossGoal = Vector3.SignedAngle(transform.forward, agent.destination - transform.position, Vector3.up);
+        if (crossGoal < 0f) {
             changeInBearingAngle_Goal = -1f * changeInBearingAngle_Goal;
         }
-        
+
         float tti_min = float.MaxValue;
 
         float angularVelocity;
@@ -112,32 +118,26 @@ public class Testing : MonoBehaviour
         {
             if(neighbour != null)
             {
-                float bearingAngle = Vector3.Angle(this.agent.velocity.normalized, this.agent.velocity.normalized - neighbour.agent.velocity.normalized);
+                // float bearingAngle = Vector3.Angle(this.agent.velocity.normalized, this.agent.velocity.normalized - neighbour.agent.velocity.normalized);
+                float bearingAngle = Vector3.SignedAngle(transform.forward, neighbour.transform.position - transform.position, Vector3.up);
                 float bearingAngleRad = bearingAngle * Mathf.Deg2Rad;
-
-                Vector3 cross = Vector3.Cross(this.agent.velocity.normalized, this.agent.velocity.normalized - neighbour.agent.velocity.normalized);
-
-                if (cross.y > 0)
-                {
-                    bearingAngle = -1f * bearingAngle;
-                }
 
                 Vector3 relativeVelocity = neighbour.agent.velocity.normalized - this.agent.velocity.normalized;
                 Vector3 relativeVelocity_conv = Vector3.Dot(relativeVelocity, (neighbour.transform.position - transform.position).normalized) * (neighbour.transform.position - transform.position).normalized;
                 Vector3 relativeVelocity_orth = relativeVelocity - relativeVelocity_conv;
-                float tti = Vector3.Distance(neighbour.transform.position, transform.position) / (relativeVelocity_conv.normalized.magnitude);
+                //float tti = (neighbour.transform.position - transform.position).magnitude / (relativeVelocity_conv.normalized.magnitude);
+                float tti = Vector3.Dot(transform.position - neighbour.transform.position, relativeVelocity_conv) / Mathf.Pow(relativeVelocity_conv.magnitude, 2);
 
-                if(Vector3.Angle((neighbour.transform.position - transform.position).normalized, relativeVelocity) <= 90f)
+                /*if (Vector3.Angle((neighbour.transform.position - transform.position).normalized, relativeVelocity) <= 90f)
                 {
                     tti = -1 * tti;
-                }
-                
-                float changeInBearingAngle = Mathf.Atan(relativeVelocity_orth.magnitude / (Vector3.Distance(neighbour.transform.position, transform.position) - relativeVelocity_conv.magnitude));
-
-                /*if (bearingAngle < 0)
-                {
-                    changeInBearingAngle = -1f * changeInBearingAngle;
                 }*/
+
+                float changeInBearingAngle = Mathf.Atan(relativeVelocity_orth.magnitude / ((neighbour.transform.position - transform.position).magnitude - relativeVelocity_conv.magnitude));
+
+                if (bearingAngle < 0) {
+                    changeInBearingAngle = -1f * changeInBearingAngle;
+                }
 
                 if (changeInBearingAngle < 0)
                 {
@@ -161,7 +161,9 @@ public class Testing : MonoBehaviour
                         threshold_bearingAngle = -1f * (float)Math.PI / 2;
                     }
 
-                    if (tti > 0 && Math.Abs(changeInBearingAngle) < Math.Abs(threshold_bearingAngle))
+                    //if (tti > 0 && Math.Abs(bearingAngleRad) < Math.Abs(threshold_bearingAngle))
+                    //if (tti > 0 && bearingAngleRad < threshold_bearingAngle)
+                    if (tti > 0 && changeInBearingAngle > threshold_bearingAngle && tti < 8f)
                     {
                         if (!Once)
                         {
@@ -186,7 +188,9 @@ public class Testing : MonoBehaviour
                         threshold_bearingAngle = (float)Math.PI / 2;
                     }
 
-                    if (tti > 0 && Math.Abs(changeInBearingAngle) < Math.Abs(threshold_bearingAngle))
+                    //if (tti > 0 && Math.Abs(bearingAngleRad) < Math.Abs(threshold_bearingAngle))
+                    //if (tti > 0 && bearingAngleRad < threshold_bearingAngle)
+                    if (tti > 0 && changeInBearingAngle < threshold_bearingAngle && tti < 8f)
                     {
                         if (!Once)
                         {
@@ -212,7 +216,7 @@ public class Testing : MonoBehaviour
             {
                 if (pos_Phi == float.MaxValue)
                 {
-                    angularVelocity = 0f /*changeInBearingAngle_Goal*/;
+                    angularVelocity = /*0f*/ changeInBearingAngle_Goal; // for minimum deviation
                 } else
                 {
                     angularVelocity = pos_Phi;
@@ -222,7 +226,7 @@ public class Testing : MonoBehaviour
             {
                 if (neg_Phi == float.MinValue)
                 {
-                    angularVelocity = 0f /*changeInBearingAngle_Goal*/;
+                    angularVelocity = /*0f*/ changeInBearingAngle_Goal; // for minimum deviation
                 }
                 else
                 {
@@ -241,6 +245,7 @@ public class Testing : MonoBehaviour
         } else if (Vector3.Distance(agent.destination, transform.position) < 2f)
         {
             angularVelocity = 0f;
+            newDesiredVelocity = Vector3.zero;
         } else 
         {
             angularVelocity = changeInBearingAngle_Goal;
@@ -250,14 +255,14 @@ public class Testing : MonoBehaviour
         if (neighbourExist && tti_min < 3f)
         {
             tangentialVelocityFac = (float)(1 - Math.Pow(Math.E, (double)(-1 * 0.5 * tti_min * tti_min)));
-  
+            angularVelocity = -1f * (float)Math.PI / 2;
         } else
         {
             tangentialVelocityFac = 1f;
         }
 
         if(Vector3.Distance(agent.destination, transform.position) < 0.2f) {
-            newDesiredVelocity = Vector3.zero;
+            //newDesiredVelocity = Vector3.zero;
         }
 
         return (angularVelocity, newDesiredVelocity, tangentialVelocityFac);

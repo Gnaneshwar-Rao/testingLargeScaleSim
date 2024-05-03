@@ -62,10 +62,14 @@
     <Compile Include="Assets\Scripts\Boid Movement\BoidMovement.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\BoidVision.cs" />
     <Compile Include="Assets\Scripts\Djisktra Movement Scripts\LineDrawer.cs" />
+    <Compile Include="Assets\Scripts\Testing_New.cs" />
+    <Compile Include="Assets\LowMan\Scripts\FindNearestPlayerObstacle.cs" />
     <Compile Include="Assets\Scripts\ImplicitMovement.cs" />
     <Compile Include="Assets\Scripts\Testing_1.cs" />
     <Compile Include="Assets\Scripts\Djisktra Movement Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid_Rigidbody.cs" />
+    <Compile Include="Assets\Scripts\PerceivedObstacle.cs" />
+    <Compile Include="Assets\LowMan\Scripts\NewPlayerBoundaryDetection.cs" />
     <Compile Include="Assets\Scripts\Boid Movement\NewMovementBoid.cs" />
     <Compile Include="Assets\LowMan\Scripts\NavThirdPersonCharacter.cs" />
     <Compile Include="Assets\Scripts\Djisktra Movement Scripts\Pathfinding.cs" />
@@ -331,11 +335,11 @@
     <Reference Include="alglib.net">
       <HintPath>Assets\plugins\alglib.net.dll</HintPath>
     </Reference>
-    <Reference Include="Accord">
-      <HintPath>Assets\plugins\Accord.dll</HintPath>
-    </Reference>
     <Reference Include="Accord.Math.Core">
       <HintPath>Assets\plugins\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord">
+      <HintPath>Assets\plugins\Accord.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
@@ -718,8 +722,14 @@
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
@@ -786,6 +796,9 @@
     </Reference>
     <Reference Include="Unity.SysrootPackage.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.SysrootPackage.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

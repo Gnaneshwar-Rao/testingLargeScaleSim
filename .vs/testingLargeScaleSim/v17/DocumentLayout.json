@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|c:\\users\\gnanesh\\desktop\\simulation 1\\testinglargescalesim\\assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\testing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\lowman\\scripts\\navthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\lowman\\scripts\\findnearestplayerobstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\findnearestplayerobstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|c:\\users\\gnanesh\\desktop\\simulation 1\\testinglargescalesim\\assets\\lowman\\scripts\\navthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\navthirdpersoncharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\scripts\\testing_0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\testing_0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\scripts\\testing_new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\testing_new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\lowman\\scripts\\newplayerboundarydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\lowman\\scripts\\newplayerboundarydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\assets\\scripts\\perceivedobstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C5A9850-1518-15A4-6985-20F6B814CCC7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\perceivedobstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,19 +34,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Testing_0.cs",
-              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing_0.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Testing_0.cs",
-              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing_0.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Testing_0.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAwB4AAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "PerceivedObstacle.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\PerceivedObstacle.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PerceivedObstacle.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\PerceivedObstacle.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PerceivedObstacle.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T05:40:37.022Z",
+              "WhenOpened": "2024-04-29T04:11:28.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Testing_New.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing_New.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Testing_New.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing_New.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Testing_New.cs",
+              "ViewState": "AQIAAO0AAAAAAAAAAAAIwJAAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-29T03:55:02.681Z",
               "EditorCaption": ""
             },
             {
@@ -45,7 +69,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Testing.cs",
               "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\Scripts\\Testing.cs",
               "RelativeToolTip": "Assets\\Scripts\\Testing.cs",
-              "ViewState": "AQIAAPEAAAAAAAAAAAAtwAYBAABMAAAA",
+              "ViewState": "AQIAANAAAAAAAAAAAAAewOQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-11T04:26:53.528Z",
               "EditorCaption": ""
@@ -53,12 +77,37 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FindNearestPlayerObstacle.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\FindNearestPlayerObstacle.cs",
+              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\FindNearestPlayerObstacle.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\FindNearestPlayerObstacle.cs",
+              "RelativeToolTip": "Assets\\LowMan\\Scripts\\FindNearestPlayerObstacle.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAmwCIAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T03:46:29.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "NewPlayerBoundaryDetection.cs",
+              "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NewPlayerBoundaryDetection.cs",
+              "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\NewPlayerBoundaryDetection.cs",
+              "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NewPlayerBoundaryDetection.cs",
+              "RelativeToolTip": "Assets\\LowMan\\Scripts\\NewPlayerBoundaryDetection.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAqwBMAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T04:02:44.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "NavThirdPersonCharacter.cs",
               "DocumentMoniker": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
               "RelativeDocumentMoniker": "Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
               "ToolTip": "C:\\Users\\Gnanesh\\Desktop\\Simulation 1\\testingLargeScaleSim\\Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
               "RelativeToolTip": "Assets\\LowMan\\Scripts\\NavThirdPersonCharacter.cs",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAkwGwAAAAAAAAA",
+              "ViewState": "AQIAAIkAAAAAAAAAAAAnwJoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-09T08:56:48.628Z",
               "EditorCaption": ""

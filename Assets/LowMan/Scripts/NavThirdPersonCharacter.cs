@@ -81,11 +81,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired
             // direction.
-            velocity = move;
+            
 
             move = transform.InverseTransformDirection(move);
             if (move.magnitude > 1f || move.magnitude < 1f) move.Normalize();
             CheckGroundStatus();
+            velocity = move;
             move = Vector3.ProjectOnPlane(move, m_GroundNormal);
             m_TurnAmount = Mathf.Atan2(move.x, move.z);
 
@@ -103,21 +104,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // convert the world relative moveInput vector into a local-relative
             // turn amount and forward amount required to head in the desired
             // direction.
-            velocity = move;
             move = transform.InverseTransformDirection(move);
-            move.z = move.z * tangentialVelFactor;
+            move.x = move.x * tangentialVelFactor;
             if (move.magnitude > 1f || move.magnitude < 1f) move.Normalize();
+            //move = move * tangentialVelFactor;
             CheckGroundStatus();
-            move = Vector3.ProjectOnPlane(move, m_GroundNormal);
+            velocity = move;
             
-            if(tangentialVelFactor != 1f)
-            {
-                m_TurnAmount = turnAngle;
-                //m_TurnAmount = Mathf.Atan2(move.x, move.z);
-            } else
-            {
-                m_TurnAmount = turnAngle; //* Mathf.Rad2Deg
-            }
+            m_TurnAmount = turnAngle;
+            move = Vector3.ProjectOnPlane(move, m_GroundNormal);
             m_ForwardAmount = move.z;
 
             ApplyExtraTurnRotation();
@@ -130,7 +125,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void UpdateAnimator(Vector3 move)
         {
             // update the animator parameters
-            m_Animator.SetFloat("Forward", m_ForwardAmount / 3, 0.1f, Time.deltaTime);
+            m_Animator.SetFloat("Forward", m_ForwardAmount / 2, 0.1f, Time.deltaTime);
             m_Animator.SetFloat("Turn", m_TurnAmount, 0.1f, Time.deltaTime);
             m_Animator.SetBool("Crouch", m_Crouching);
             m_Animator.SetBool("OnGround", m_IsGrounded);
@@ -139,21 +134,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 m_Animator.SetFloat("Jump", m_Rigidbody.velocity.y);
             }
 
-            // calculate which leg is behind, so as to leave that leg trailing in the jump animation
-            // (This code is reliant on the specific run cycle offset in our animations,
-            // and assumes one leg passes the other at the normalized clip times of 0.0 and 0.5)
-
-            /*float runCycle =
-				Mathf.Repeat(
-					m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime + m_RunCycleLegOffset, 1);
-			float jumpLeg = (runCycle < k_Half ? 1 : -1) * m_ForwardAmount;
-			if (m_IsGrounded)
-			{
-				m_Animator.SetFloat("JumpLeg", jumpLeg);
-			}*/
-
-            // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,
-            // which affects the movement speed because of the root motion.
             if (m_IsGrounded && move.magnitude > 0)
             {
                 m_Animator.speed = m_AnimSpeedMultiplier;
@@ -170,6 +150,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // help the character turn faster (this is in addition to root rotation in the animation)
             float turnSpeed = Mathf.Lerp(m_StationaryTurnSpeed, m_MovingTurnSpeed, m_ForwardAmount);
             transform.Rotate(0, m_TurnAmount * turnSpeed * Time.deltaTime, 0);
+            velocity = Quaternion.AngleAxis(m_TurnAmount * turnSpeed * Time.deltaTime, Vector3.up) * velocity;
         }
 
         public void OnAnimatorMove()
@@ -178,10 +159,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // this allows us to modify the positional speed before it's applied.
             if (m_IsGrounded && Time.deltaTime > 0)
             {
-                Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
+                /*Vector3 v = (m_Animator.deltaPosition * m_MoveSpeedMultiplier) / Time.deltaTime;
 
                 v.y = m_agent.velocity.y;
-                m_agent.velocity = v;
+                m_agent.velocity = v;*/
+                velocity = transform.TransformDirection(velocity) * m_MoveSpeedMultiplier;
+                m_agent.velocity = velocity;
             }
         }
 
