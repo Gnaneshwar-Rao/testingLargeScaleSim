@@ -77,7 +77,7 @@ public class Testing : MonoBehaviour
     private Vector3 InitializeMovement()
     {
         //newTarget = new Vector3(-character.transform.position.x, character.transform.position.y, -character.transform.position.z);
-        newTarget = new Vector3(-character.transform.position.x, character.transform.position.y, -character.transform.position.z);
+        newTarget = new Vector3(character.transform.position.x, character.transform.position.y, -character.transform.position.z);
 
         return newTarget;
     }
