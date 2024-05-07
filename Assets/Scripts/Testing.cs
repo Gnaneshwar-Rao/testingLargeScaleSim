@@ -18,6 +18,7 @@ public class Testing : MonoBehaviour
     //[SerializeField] List<Testing> fieldOfViewChars;
     [HideInInspector] public FindNearestPlayerObstacle findPlayer;
     public List<Testing> fieldOfViewChars;
+    public List<ObstacleColliderData> obstacleColliders;
 
     private float turnAngle;
     private Vector3 newDesiredVelocity;
@@ -38,6 +39,7 @@ public class Testing : MonoBehaviour
     void Update()
     {
         this.fieldOfViewChars = findPlayer.nearestPlayers;
+        this.obstacleColliders = findPlayer.nearestObstacles;
         if (firstFrame)
         {
             character.Move(agent.destination - transform.position, false, false);
@@ -114,6 +116,7 @@ public class Testing : MonoBehaviour
 
         bool Once = false;
 
+        // Test Players nearby
         foreach (Testing neighbour in this.fieldOfViewChars)
         {
             if(neighbour != null)
@@ -209,7 +212,101 @@ public class Testing : MonoBehaviour
                 }
             }      
         }
-        
+
+        // Test Obstacles nearby
+        foreach (ObstacleColliderData obs in this.obstacleColliders)
+        {
+            if (obs != null)
+            {
+                obs.hitLocation.y = transform.position.y;
+                float bearingAngle = Vector3.SignedAngle(transform.forward, obs.hitLocation - transform.position, Vector3.up);
+                float bearingAngleRad = bearingAngle * Mathf.Deg2Rad;
+
+                Vector3 relativeVelocity = -1 * this.agent.velocity.normalized;
+                Vector3 relativeVelocity_conv = Vector3.Dot(relativeVelocity, (obs.hitLocation - transform.position).normalized) * (obs.hitLocation - transform.position).normalized;
+                Vector3 relativeVelocity_orth = relativeVelocity - relativeVelocity_conv;
+                float tti = Vector3.Dot(transform.position - obs.hitLocation, relativeVelocity_conv) / Mathf.Pow(relativeVelocity_conv.magnitude, 2);
+
+                float changeInBearingAngle = Mathf.Atan(relativeVelocity_orth.magnitude / ((obs.hitLocation - transform.position).magnitude - relativeVelocity_conv.magnitude));
+
+                if (bearingAngle < 0)
+                {
+                    changeInBearingAngle = -1f * changeInBearingAngle;
+                }
+
+                if (changeInBearingAngle < 0)
+                {
+                    /*Model’s parameters (a, b, c) (cf. Equation (1)) can be adapted for each walker to individualize avoidance
+                    behavior with negligible computational overhead.The impact of
+                    parameters change on simulations is illustrated in the companion
+                    video.An intuitive link exists between avoidance behavior and the
+                    shape of ?1 which is completely controlled by(a, b, c).The higher
+                    the peak of ?1, the earlier the anticipation. The wider the peak,
+                    the stronger the adaptation.Finally, the curvature of ?1 controls a
+                    trade - off between anticipation time and reaction strength: when the
+                    maximum curvature is higher, early anticipated reactions remain
+                    low whilst they get stronger when tti decreases. The automatic
+                    adaptation of parameters with respect to external factors, such as
+                    local density of population, may open interesting perspectives.*/
+
+                    threshold_bearingAngle = -1f * 0.6f / (tti * Mathf.Sqrt(tti));
+
+                    if (Math.Abs(threshold_bearingAngle) > Math.PI / 2)
+                    {
+                        threshold_bearingAngle = -1f * (float)Math.PI / 2;
+                    }
+
+                    //if (tti > 0 && Math.Abs(bearingAngleRad) < Math.Abs(threshold_bearingAngle))
+                    //if (tti > 0 && bearingAngleRad < threshold_bearingAngle)
+                    if (tti > 0 && changeInBearingAngle > threshold_bearingAngle && tti < 8f)
+                    {
+                        if (!Once)
+                        {
+                            neg_Phi = changeInBearingAngle - threshold_bearingAngle;
+                            tti_min = tti;
+                            neighbourExist = true;
+                            Once = true;
+                        }
+                        else
+                        {
+                            neg_Phi = Mathf.Max(neg_Phi, changeInBearingAngle - threshold_bearingAngle);
+                            tti_min = Mathf.Min(tti_min, tti);
+                            neighbourExist = true;
+                        }
+                    }
+                }
+                else
+                {
+                    threshold_bearingAngle = 0.6f / (tti * Mathf.Sqrt(tti));
+
+                    if (Math.Abs(threshold_bearingAngle) > Math.PI / 2)
+                    {
+                        threshold_bearingAngle = (float)Math.PI / 2;
+                    }
+
+                    //if (tti > 0 && Math.Abs(bearingAngleRad) < Math.Abs(threshold_bearingAngle))
+                    //if (tti > 0 && bearingAngleRad < threshold_bearingAngle)
+                    if (tti > 0 && changeInBearingAngle < threshold_bearingAngle && tti < 8f)
+                    {
+                        if (!Once)
+                        {
+                            pos_Phi = changeInBearingAngle - threshold_bearingAngle;
+                            tti_min = tti;
+                            neighbourExist = true;
+                            Once = true;
+                        }
+                        else
+                        {
+                            pos_Phi = Mathf.Min(pos_Phi, changeInBearingAngle - threshold_bearingAngle);
+                            tti_min = Mathf.Min(tti_min, tti);
+                            neighbourExist = true;
+                        }
+                    }
+                }
+            }
+        }
+
+
         if (Math.Abs(changeInBearingAngle_Goal) < 0.1f)
         {
             if (Math.Abs(pos_Phi) < Math.Abs(neg_Phi))
@@ -245,7 +342,7 @@ public class Testing : MonoBehaviour
         } else if (Vector3.Distance(agent.destination, transform.position) < 2f)
         {
             angularVelocity = 0f;
-            newDesiredVelocity = Vector3.zero;
+            //newDesiredVelocity = Vector3.zero;
         } else 
         {
             angularVelocity = changeInBearingAngle_Goal;
@@ -261,8 +358,10 @@ public class Testing : MonoBehaviour
             tangentialVelocityFac = 1f;
         }
 
-        if(Vector3.Distance(agent.destination, transform.position) < 0.2f) {
+        if(Vector3.Distance(agent.destination, transform.position) < 0.3f) {
             //newDesiredVelocity = Vector3.zero;
+            angularVelocity = 0f;
+            newDesiredVelocity = Vector3.zero;
         }
 
         return (angularVelocity, newDesiredVelocity, tangentialVelocityFac);

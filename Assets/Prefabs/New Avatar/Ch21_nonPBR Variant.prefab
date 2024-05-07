@@ -669,7 +669,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   searchRadius: 10
   nearestPlayers: []
-  layer: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  fieldOfViewAngle: 150
 --- !u!4 &1742552111752256164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dbf4696529fa77949a16a68be6e8dda0, type: 3}
